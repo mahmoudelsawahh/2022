@@ -1,262 +1,16 @@
-searchForm = document.querySelector('.search-form');
-
-document.querySelector('#search-btn').onclick = () =>{
-  searchForm.classList.toggle('active');
-}
-
-let loginForm = document.querySelector('.login-form-container');
-var x = document.getElementById('x');
-document.querySelector('#login-btn').onclick = () =>{
-  loginForm.classList.toggle('active');
-  x.classList.toggle('none');
-}
-document.querySelector('#close-login-btn').onclick = () =>{
-  loginForm.classList.remove('active');
-  x.classList.toggle('none');
-
-
-}
-
-window.onscroll = () =>{
-
-  searchForm.classList.remove('active');
-
-
-  if(window.scrollY > 80){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
-  }
-
-}
-
-window.onload = () =>{
-
-  if(window.scrollY > 80){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
-  }
-
-  // fadeOut();
-
-}
-
-// function loader(){
-//   document.querySelector('.loader-container').classList.add('active');
-// }
-
-// function fadeOut(){
-//   setTimeout(loader, 4000);
-// }
-
-var swiper = new Swiper(".books-slider", {
-  loop:true,
-  centeredSlides: true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-var swiper = new Swiper(".featured-slider", {
-  spaceBetween: 10,
-  loop:true,
-  centeredSlides: true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    450: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 3,
-    },
-    1024: {
-      slidesPerView: 4,
-    },
-  },
-});
-
-var swiper = new Swiper(".arrivals-slider", {
-  spaceBetween: 10,
-  loop:true,
-  centeredSlides: true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-var swiper = new Swiper(".reviews-slider", {
-  spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
-  centeredSlides: true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-var swiper = new Swiper(".blogs-slider", {
-  spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
-  centeredSlides: true,
-  autoplay: {
-    delay: 9500,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
-
-
-
-// let addToCartButtons = document.getElementsByClassName('addToCart')
-// let cartContainer = document.getElementsByTagName('tbody')[0]
-// let quantityFields = document.getElementsByClassName('num')
-// let delete_buttons = document.getElementsByClassName('uk-button-danger')
-
-// // picking up all the Add-To-Cart buttons
-// for(let i = 0; i < addToCartButtons.length; i++){
-//     addToCartButtons[i].addEventListener('click', addToCart)
-// }
-// // This function helps to add items to our cart
-
-// function addToCart(event){
-//     let itemContainer = document.createElement('tr')
-//     let btn = event.target
-//     let btnGrandParent = btn.parentElement.parentElement
-//     let btnParent = btn.parentElement
-//     let itemImage = btnGrandParent.children[0].children[1].src;
-//     let itemName = btnParent.children[0].innerText
-//     let itemPrice = btn.innerText
- 
-//     itemContainer.innerHTML =
-//      `
-//     <td class="padding"><img class="uk-preserve-width uk-border-circle" src=${itemImage} width="40" alt=""></td>
-//     <td class="uk-table-link">
-//         <h3 class = "item-name">${itemName}</h3>
-//     </td>
-//     <td class="padding"><input type = 'text' class = 'num' value = '1'></td>
-//     <td class="uk-text-truncate total-price padding"><h3>${itemPrice}</h3></td>
-//     <td  class="padding"><button class="uk-button uk-button-danger" type="button">Remove</button></td>
-// `     
-
-//     cartContainer.append(itemContainer)
-
-
-
-
-//     // Accessing individual quantity fields
-//     for(let i = 0; i < quantityFields.length; i++){
-//         quantityFields[i].value = 1
-//         quantityFields[i].addEventListener('change', totalCost)
-                
-//     }
-
-
-//     // Accessing individual quantity fields
-//     for(let i = 0; i < delete_buttons.length; i++){
-//         delete_buttons[i].addEventListener('click', removeItem)
-//     }
-
-
-   
-// }
-
-
-
-// // This function helps to multiply the quantity and the price
-// function totalCost(event){
-  
-//     let quantity = event.target
-//     quantity_parent = quantity.parentElement.parentElement
-//     price_field = quantity_parent.getElementsByClassName('item-price')[0]
-//     total_field = quantity_parent.getElementsByClassName('total-price')[0]
-//     price_field_content = price_field.innerText.replace('$', '')
-//     total_field.children[0].innerText = '$' +  quantity.value * price_field_content
-//     grandTotal()
-//     if(isNaN(quantity.value)|| quantity.value <= 0){
-//         quantity.value = 1
-//     }
-
-    
-    
-// }
-// function removeItem(event){
-//     del_btn = event.target
-//     del_btn_parent = del_btn.parentElement.parentElement
-//     del_btn_parent.remove()
-//     console.log(del_btn)
-    
-// }
-
-
-
-
-
-
 (function(){
   // Add to Cart Interaction - by CodyHouse.co
   var cart = document.getElementsByClassName('js-cd-cart');
   if(cart.length > 0) {
 
   	var cartAddBtns = document.getElementsByClassName('addToCart');
-	   
+	
+      
+
+
+
+
+
 
 
 
@@ -288,16 +42,16 @@ var swiper = new Swiper(".blogs-slider", {
 			});
 			
 			cart[0].addEventListener('click', function(event) {
-				// let btn = event.target
-				// let btnGrandParent = btn.parentElement.parentElement
-				// let btnParent = btn.parentElement
-				// let itemImage = btnGrandParent.children[1].firstElementChild.src;
-				// let itemName = btnParent.children[0].innerText
-				// let itemPrice = btnParent.children[1].innerText
-				// console.log(itemName);
-				// console.log(itemImage);
-				// console.log(itemPrice)
-				// // -------------------------------------------------------------------------
+				let btn = event.target
+				let btnGrandParent = btn.parentElement.parentElement
+				let btnParent = btn.parentElement
+				let itemImage = btnGrandParent.children[1].firstElementChild.src;
+				let itemName = btnParent.children[0].innerText
+				let itemPrice = btnParent.children[1].innerText
+				console.log(itemName);
+				console.log(itemImage);
+				console.log(itemPrice)
+				// -------------------------------------------------------------------------
 				if(event.target == cart[0]) { // close cart when clicking on bg layer
 					toggleCart(true);
 				} else if (event.target.closest('.cd-cart__delete-item')) { // remove product from cart
@@ -367,12 +121,12 @@ var swiper = new Swiper(".blogs-slider", {
 
 		function addProduct(target) {
 			// this is just a product placeholder
-      let btn = event.target
-      let btnGrandParent = btn.parentElement.parentElement
-      let btnParent = btn.parentElement
-      let itemImage = btnGrandParent.children[0].children[1].src;
-      let itemName = btnParent.children[0].innerText
-      let itemPrice = btn.innerText
+			let btn = event.target
+			let btnGrandParent = btn.parentElement.parentElement
+			let btnParent = btn.parentElement
+			let itemImage = btnGrandParent.children[1].firstElementChild.src;
+			let itemName = btnParent.children[0].innerText
+			let itemPrice = btnParent.children[1].innerText
 
 			productId = productId + 1;
 			var productAdded = `<li class="cd-cart__product"><div class="cd-cart__image"><a href="#0"><img src=${itemImage} alt="placeholder"></a></div><div class="cd-cart__details"><h3 class="truncate"><a href="#0">${itemName}</a></h3><span class="cd-cart__price">${itemPrice}</span><div class="cd-cart__actions"><a href="#0" class="cd-cart__delete-item"></a><div class="cd-cart__quantity"><label for="cd-product-'+ productId +'">Qty</label><span class="cd-cart__select"><select class="reset" id="cd-product-'+ productId +'" name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select><svg class="icon" viewBox="0 0 12 12"><polyline fill="none" stroke="currentColor" points="2,4 6,8 10,4 "/></svg></span></div></div></div></li>`;

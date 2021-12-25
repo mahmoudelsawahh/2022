@@ -41,9 +41,9 @@ window.onload = () =>{
 
 }
 
-function loader(){
-  document.querySelector('.loader-container').classList.add('active');
-}
+// function loader(){
+//   document.querySelector('.loader-container').classList.add('active');
+// }
 
 function fadeOut(){
   setTimeout(loader, 4000);
@@ -184,7 +184,21 @@ function addToCart(event){
     let itemName = btnParent.children[0].innerText
     let itemPrice = btnParent.children[1].innerText
     
+
+
+    var arr = [itemImage, itemName,itemPrice];
+    for( var i = 0; i < arr.length ; i++){
+     localStorage.setItem('img' , arr[0])
+      localStorage.setItem('name' , arr[1])
+      localStorage.setItem('price' , arr[3])
+
+    }
+    var localImg =  localStorage.getItem('img');
+    var localName =  localStorage.getItem('name');
+    var localPrice =  localStorage.getItem('price');
     
+
+  
     itemContainer.innerHTML = `
     <td class="lefted"><img class="uk-preserve-width uk-border-circle" src=${itemImage} width="40" alt=""></td>
     <td class="uk-table-link">
@@ -196,14 +210,13 @@ function addToCart(event){
 <td  class="padding"><button class="uk-button ssd " type="button">Buy Now</button></td>
 
 
-`     
+`   
 
     cartContainer.append(itemContainer)
-
-
-
-
-    // Accessing individual quantity fields
+// ----------------------------
+     
+       // ----------------------------
+    // Accessing individual quantity fields     
     for(let i = 0; i < quantityFields.length; i++){
         quantityFields[i].value = 1
         quantityFields[i].addEventListener('change', totalCost)
@@ -250,4 +263,45 @@ function removeItem(event){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ---------------------------------
+function validate(){
+  const form = document.getElementById('formes');
+  const email = document.getElementById('mail').value;
+   const pattern = '@istitutocorni.it';
+   var Ele = document.getElementById('featuredEle');
+   var vaild = document.getElementById('vaild');
+    if (email.match(pattern)){
+      Ele.classList.remove('none');
+      vaild.style.backgroundColor = 'green';
+      console.log(vaild.setAttribute('value' , 'vaild'));
+
+      vaild.style.backgroundColor = 'green';
+    }else{
+      console.log(vaild.setAttribute('value' , 'Not vaild'));
+      vaild.style.backgroundColor = 'red';
+         if(Ele.classList.contains('none')){
+           console.log('Ok');
+         }     else{
+            Ele.classList.add('none');          
+         }
+    }
+}
+
+

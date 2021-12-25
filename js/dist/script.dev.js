@@ -37,11 +37,10 @@ window.onload = function () {
   }
 
   fadeOut();
-};
+}; // function loader(){
+//   document.querySelector('.loader-container').classList.add('active');
+// }
 
-function loader() {
-  document.querySelector('.loader-container').classList.add('active');
-}
 
 function fadeOut() {
   setTimeout(loader, 4000);
@@ -174,8 +173,21 @@ function addToCart(event) {
   var itemImage = btnGrandParent.children[1].firstElementChild.src;
   var itemName = btnParent.children[0].innerText;
   var itemPrice = btnParent.children[1].innerText;
+  var arr = [itemImage, itemName, itemPrice];
+
+  for (var i = 0; i < arr.length; i++) {
+    localStorage.setItem('img', arr[0]);
+    localStorage.setItem('name', arr[1]);
+    localStorage.setItem('price', arr[3]);
+  }
+
+  var localImg = localStorage.getItem('img');
+  var localName = localStorage.getItem('name');
+  var localPrice = localStorage.getItem('price');
   itemContainer.innerHTML = "\n    <td class=\"lefted\"><img class=\"uk-preserve-width uk-border-circle\" src=".concat(itemImage, " width=\"40\" alt=\"\"></td>\n    <td class=\"uk-table-link\">\n        <h3 class = \"item-name\">").concat(itemName, "</h3>\n    </td>\n    <td class=\"lefted\"><input type = 'text' class = 'num' value = '1'></td>\n    <td class=\"uk-text-truncate total-price \"><h3>").concat(itemPrice, "</h3></td>\n<td  class=\"padding\"><button class=\"uk-button uk-button-danger \" type=\"button\">Remove</button></td>\n<td  class=\"padding\"><button class=\"uk-button ssd \" type=\"button\">Buy Now</button></td>\n\n\n");
-  cartContainer.append(itemContainer); // Accessing individual quantity fields
+  cartContainer.append(itemContainer); // ----------------------------
+  // ----------------------------
+  // Accessing individual quantity fields     
 
   for (var _i = 0; _i < quantityFields.length; _i++) {
     quantityFields[_i].value = 1;
@@ -210,3 +222,28 @@ function removeItem(event) {
   del_btn_parent.remove();
   console.log(del_btn);
 } // ---------------------------------
+
+
+function validate() {
+  var form = document.getElementById('formes');
+  var email = document.getElementById('mail').value;
+  var pattern = '@istitutocorni.it';
+  var Ele = document.getElementById('featuredEle');
+  var vaild = document.getElementById('vaild');
+
+  if (email.match(pattern)) {
+    Ele.classList.remove('none');
+    vaild.style.backgroundColor = 'green';
+    console.log(vaild.setAttribute('value', 'vaild'));
+    vaild.style.backgroundColor = 'green';
+  } else {
+    console.log(vaild.setAttribute('value', 'Not vaild'));
+    vaild.style.backgroundColor = 'red';
+
+    if (Ele.classList.contains('none')) {
+      console.log('Ok');
+    } else {
+      Ele.classList.add('none');
+    }
+  }
+}
